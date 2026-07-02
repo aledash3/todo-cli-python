@@ -41,22 +41,24 @@ arquitectura profesional y buenas prácticas de desarrollo en Python.
 
 # 🏗️ Arquitectura
 
-    todo_cli_project/
-    ├── .vscode/
-    │   └── settings.json
-    ├── data/
-    │   └── tasks.json
-    ├── todo_cli/
-    │   ├── __init__.py
-    │   ├── controllers.py
-    │   ├── main.py
-    │   ├── models.py
-    │   ├── storage.py
-    │   └── ui.py
-    ├── .gitignore
-    ├── pyproject.toml
-    ├── requirements.txt
-    └── README.md
+``` text
+todo_cli_project/
+├── .vscode/
+│   └── settings.json
+├── data/
+│   └── tasks.json
+├── todo_cli/
+│   ├── __init__.py
+│   ├── controllers.py
+│   ├── main.py
+│   ├── models.py
+│   ├── storage.py
+│   └── ui.py
+├── .gitignore
+├── pyproject.toml
+├── requirements.txt
+└── README.md
+```
 
 ### Capas
 
@@ -81,15 +83,30 @@ arquitectura profesional y buenas prácticas de desarrollo en Python.
 
 # ✨ Funcionalidades
 
--   Agregar tareas
--   Listar tareas
--   Marcar tareas como completadas
--   Actualizar descripción
--   Eliminar tareas
--   Consultar estadísticas
--   Mostrar tareas pendientes
--   Mostrar tareas completadas
--   Persistencia automática
+-   Agregar tareas.
+-   Listar tareas.
+-   Marcar tareas como completadas.
+-   Actualizar descripción.
+-   Eliminar tareas.
+-   Consultar estadísticas.
+-   Mostrar tareas pendientes.
+-   Mostrar tareas completadas.
+-   Persistencia automática de la información.
+
+------------------------------------------------------------------------
+
+# ⚙️ Requisitos
+
+## Software
+
+-   Python 3.13 o superior
+-   Visual Studio Code (opcional)
+
+## Dependencias
+
+``` bash
+pip install -r requirements.txt
+```
 
 ------------------------------------------------------------------------
 
@@ -101,57 +118,86 @@ arquitectura profesional y buenas prácticas de desarrollo en Python.
 git clone https://github.com/aledash3/todo-cli-python.git
 ```
 
-## 2. Crear entorno virtual
+## 2. Acceder al proyecto
 
-Linux
+``` bash
+cd todo-cli-python
+```
+
+## 3. Crear un entorno virtual
+
+### Linux
 
 ``` bash
 python3.13 -m venv .venv
 source .venv/bin/activate
 ```
 
-Windows
+### Windows
 
 ``` powershell
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-## 3. Instalar dependencias
+## 4. Instalar las dependencias
 
 ``` bash
 pip install -r requirements.txt
+```
+
+## 5. Instalar el comando global del proyecto
+
+``` bash
+pip install -e .
 ```
 
 ------------------------------------------------------------------------
 
 # ▶️ Ejecución
 
-``` bash
-python -m todo_cli.main
-```
-
-o
+## Utilizando el comando `todo`
 
 ``` bash
 todo --help
 ```
 
-------------------------------------------------------------------------
-
-# 💻 Comandos
+### Ejemplos
 
 ``` bash
 todo add "Comprar leche"
 todo list
 todo show 1
 todo complete 1
-todo update 1 "Nueva descripción"
+todo update 1 "Comprar leche descremada"
 todo pending
 todo completed
 todo stats
 todo remove 1
 todo clear-completed
+todo version
+```
+
+## Sin instalar el comando `todo`
+
+``` bash
+python -m todo_cli.main --help
+```
+
+### Ejemplos
+
+``` bash
+python -m todo_cli.main add "Comprar leche"
+python -m todo_cli.main list
+python -m todo_cli.main show 1
+python -m todo_cli.main complete 1
+python -m todo_cli.main update 1 "Comprar leche descremada"
+python -m todo_cli.main pending
+python -m todo_cli.main completed
+python -m todo_cli.main stats
+python -m todo_cli.main remove 1
+python -m todo_cli.main clear-completed
+python -m todo_cli.main version
 ```
 
 ------------------------------------------------------------------------
@@ -180,18 +226,37 @@ Formato:
 
 # 🧩 Principios Aplicados
 
--   Arquitectura en capas
--   SOLID
--   PEP 8
--   Programación orientada a objetos
--   Separación de responsabilidades
--   Type Hints
--   Manejo de excepciones
+-   Arquitectura en capas.
+-   Principios SOLID.
+-   Estándar PEP 8.
+-   Programación Orientada a Objetos.
+-   Type Hints.
+-   Manejo de excepciones.
+-   Persistencia desacoplada mediante JSON.
+
+------------------------------------------------------------------------
+
+# 👨‍💻 Autor
+
+**David Alejandro Cruz Palacios**
+
+Carrera de Ciencias de la Computación
+
+Facultad de Ingeniería
+
+Universidad Politécnica Salesiana
+
+Quito, Ecuador
+
+GitHub: https://github.com/aledash3
 
 ------------------------------------------------------------------------
 
 # 📜 Licencia
 
-Proyecto desarrollado con fines educativos y de aprendizaje.
+Este proyecto fue desarrollado con fines académicos y educativos.
 
-Licencia MIT.
+Todos los derechos pertenecen a su autor.
+
+Su utilización es libre para fines de aprendizaje, estudio y consulta,
+conservando el reconocimiento de la autoría original.
