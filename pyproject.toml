@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "todo-cli"
+version = "1.0.0"
+description = "CLI To-Do List desarrollada con Python, Typer y Rich."
+readme = "README.md"
+requires-python = ">=3.13"
+
+dependencies = [
+    "typer>=0.16.0",
+    "rich>=14.0.0"
+]
+
+[project.scripts]
+todo = "todo_cli.main:app"
+
+[tool.setuptools]
+packages = ["todo_cli"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "W",
+    "UP",
+    "B"
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
