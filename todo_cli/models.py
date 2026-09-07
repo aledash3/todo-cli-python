@@ -20,7 +20,7 @@ class Task:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Task":
+    def from_dict(cls, data: dict) -> Task:
         """
         Crea una instancia de Task a partir de un diccionario.
         """

@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from todo_cli.models import Task
-from todo_cli.storage import JsonStorage
+from todo_cli.storage import JsonStorage, TaskStorage
 
 
 class TaskNotFoundError(Exception):
@@ -29,16 +29,16 @@ class TaskController:
     Controlador encargado de la lógica de negocio de la aplicación.
     """
 
-    def __init__(self, storage: JsonStorage) -> None:
+    def __init__(self, storage: TaskStorage) -> None:
         self._storage = storage
 
     @classmethod
-    def create_default(cls) -> "TaskController":
+    def create_default(cls, file_path: str | Path | None = None) -> TaskController:
         """
         Crea una instancia del controlador utilizando el
-        almacenamiento por defecto.
+        almacenamiento por defecto o una ruta personalizada.
         """
-        storage = JsonStorage(Path("data/tasks.json"))
+        storage = JsonStorage(file_path)
         return cls(storage)
 
     def add_task(self, description: str) -> Task:
@@ -194,3 +194,18 @@ class TaskController:
         self._storage.replace_task(task)
 
         return task
+
+    def search_tasks(self, query: str) -> list[Task]:
+        """
+        Busca tareas que contengan el texto indicado en su descripción.
+        """
+        query = query.strip().lower()
+
+        if not query:
+            return self.list_tasks()
+
+        return [
+            task
+            for task in self.list_tasks()
+            if query in task.description.lower()
+        ]

@@ -1,9 +1,62 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+from typing import Protocol, runtime_checkable
 
 from todo_cli.models import Task
+
+
+def get_default_storage_path() -> Path:
+    """
+    Determina la ruta de persistencia por defecto.
+    Prioridad:
+    1. Variable de entorno TODO_CLI_PATH
+    2. Directorio local 'data/tasks.json' si existe
+    3. Directorio de usuario ~/.todo_cli/tasks.json
+    """
+    env_path = os.getenv("TODO_CLI_PATH")
+    if env_path:
+        return Path(env_path)
+
+    local_path = Path("data/tasks.json")
+    if local_path.exists():
+        return local_path
+
+    return Path.home() / ".todo_cli" / "tasks.json"
+
+
+@runtime_checkable
+class TaskStorage(Protocol):
+    """
+    Protocolo de persistencia que desacopla el controlador del mecanismo
+    de almacenamiento específico (Principio de Inversión de Dependencias - SOLID).
+    """
+
+    def load_tasks(self) -> list[Task]:
+        ...
+
+    def save_tasks(self, tasks: list[Task]) -> None:
+        ...
+
+    def get_next_id(self) -> int:
+        ...
+
+    def find_task(self, task_id: int) -> Task | None:
+        ...
+
+    def task_exists(self, task_id: int) -> bool:
+        ...
+
+    def replace_task(self, updated_task: Task) -> bool:
+        ...
+
+    def delete_task(self, task_id: int) -> bool:
+        ...
+
+    def add_task(self, description: str) -> Task:
+        ...
 
 
 class JsonStorage:
@@ -11,8 +64,11 @@ class JsonStorage:
     Gestiona la persistencia de tareas mediante un archivo JSON.
     """
 
-    def __init__(self, file_path: str | Path) -> None:
-        self._file_path = Path(file_path)
+    def __init__(self, file_path: str | Path | None = None) -> None:
+        if file_path is None:
+            self._file_path = get_default_storage_path()
+        else:
+            self._file_path = Path(file_path)
         self._initialize_storage()
 
     def _initialize_storage(self) -> None:
