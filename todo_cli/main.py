@@ -38,7 +38,7 @@ def add_task(description: str) -> None:
 
     except InvalidTaskDescriptionError as error:
         ui.show_error(str(error))
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from error
 
 
 @app.command("list")
@@ -73,18 +73,26 @@ def complete_task(task_id: int) -> None:
         TaskAlreadyCompletedError,
     ) as error:
         ui.show_error(str(error))
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from error
 
 
 @app.command("remove")
-def remove_task(task_id: int) -> None:
+def remove_task(
+    task_id: int,
+    yes: bool = typer.Option(
+        False,
+        "--yes",
+        "-y",
+        help="Confirma la eliminación sin solicitar confirmación interactiva.",
+    ),
+) -> None:
     """
     Elimina una tarea.
     """
     try:
         task = controller.get_task(task_id)
 
-        if not ui.confirm(
+        if not yes and not ui.confirm(
             f"¿Desea eliminar la tarea #{task.id}?"
         ):
             ui.show_warning("Operación cancelada.")
@@ -98,7 +106,7 @@ def remove_task(task_id: int) -> None:
 
     except TaskNotFoundError as error:
         ui.show_error(str(error))
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from error
 
 
 @app.command("show")
@@ -112,7 +120,7 @@ def show_task(task_id: int) -> None:
 
     except TaskNotFoundError as error:
         ui.show_error(str(error))
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from error
 
 
 @app.command("pending")
@@ -170,21 +178,55 @@ def update_task(
         InvalidTaskDescriptionError,
     ) as error:
         ui.show_error(str(error))
-        raise typer.Exit(code=1)
+        raise typer.Exit(code=1) from error
+
+
+@app.command("search")
+def search_tasks(query: str) -> None:
+    """
+    Busca tareas por coincidencia de texto en la descripción.
+    """
+    tasks = controller.search_tasks(query)
+
+    if not tasks:
+        ui.show_warning(
+            f"No se encontraron tareas que contengan '{query}'."
+        )
+        return
+
+    ui.show_tasks(tasks)
+    ui.show_statistics(
+        total=len(tasks),
+        pending=sum(1 for t in tasks if not t.completed),
+        completed=sum(1 for t in tasks if t.completed),
+    )
 
 
 @app.command("clear-completed")
-def clear_completed() -> None:
+def clear_completed(
+    yes: bool = typer.Option(
+        False,
+        "--yes",
+        "-y",
+        help="Confirma la eliminación sin solicitar confirmación interactiva.",
+    ),
+) -> None:
     """
     Elimina todas las tareas completadas.
     """
-    removed = controller.clear_completed_tasks()
-
-    if removed == 0:
+    if controller.completed_count() == 0:
         ui.show_warning(
             "No existen tareas completadas."
         )
         return
+
+    if not yes and not ui.confirm(
+        f"¿Desea eliminar las {controller.completed_count()} tareas completadas?"
+    ):
+        ui.show_warning("Operación cancelada.")
+        return
+
+    removed = controller.clear_completed_tasks()
 
     ui.show_success(
         f"Se eliminaron {removed} tarea(s) completada(s)."
@@ -209,7 +251,7 @@ def version() -> None:
     Muestra la versión de la aplicación.
     """
     console.print(
-        "[bold green]To-Do CLI[/bold green] v1.0.0"
+        "[bold green]To-Do CLI[/bold green] v1.1.0"
     )
 
 
@@ -227,6 +269,7 @@ def main(ctx: typer.Context) -> None:
         console.print("  add")
         console.print("  list")
         console.print("  show")
+        console.print("  search")
         console.print("  complete")
         console.print("  remove")
         console.print("  update")

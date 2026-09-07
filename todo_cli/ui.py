@@ -147,17 +147,16 @@ class TaskUI:
 
         self.console.print(table)
 
-    def confirm(self, message: str) -> bool:
+    def confirm(self, message: str, default: bool = False) -> bool:
         """
-        Solicita una confirmación al usuario.
+        Solicita una confirmación al usuario utilizando Typer.
         """
-        response = (
-            input(f"{message} [y/N]: ")
-            .strip()
-            .lower()
-        )
+        import typer
 
-        return response in {"y", "yes", "s", "si", "sí"}
+        try:
+            return typer.confirm(message, default=default)
+        except Exception:
+            return default
 
     def print_header(self) -> None:
         """
