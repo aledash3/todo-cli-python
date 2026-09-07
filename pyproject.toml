@@ -4,25 +4,37 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "todo-cli"
-version = "1.0.0"
-description = "CLI To-Do List desarrollada con Python, Typer y Rich."
+version = "1.1.0"
+description = "Professional command-line task manager built with Python, Typer, Rich, and layered SOLID architecture."
 readme = "README.md"
-requires-python = ">=3.13"
-
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "David Alejandro Cruz Palacios" }
+]
 dependencies = [
-    "typer>=0.16.0",
-    "rich>=14.0.0"
+    "typer>=0.12.0",
+    "rich>=13.0.0"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "ruff>=0.9.0"
 ]
 
 [project.scripts]
 todo = "todo_cli.main:app"
+
+[project.urls]
+Repository = "https://github.com/aledash3/todo-cli-python"
 
 [tool.setuptools]
 packages = ["todo_cli"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py313"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
