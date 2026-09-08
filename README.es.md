@@ -170,8 +170,7 @@ Cada `push` y `pull request` ejecuta automáticamente la suite en **Python 3.10,
 ## 👨‍💻 Autor
 
 **David Alejandro Cruz Palacios**  
-Estudiante de Ingeniería en Ciencias de la Computación  
-Universidad Politécnica Salesiana — Quito, Ecuador  
+Estudiante de Ingeniería en Ciencias de la Computación — Universidad Politécnica Salesiana  
 GitHub: [@aledash3](https://github.com/aledash3)
 
 ---

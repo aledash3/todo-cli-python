@@ -170,8 +170,7 @@ All pushes and pull requests trigger automated matrix testing across Python 3.10
 ## 👨‍💻 Author
 
 **David Alejandro Cruz Palacios**  
-Computer Science Engineering Student  
-Universidad Politécnica Salesiana — Quito, Ecuador  
+Computer Science Engineering Student — Universidad Politécnica Salesiana  
 GitHub: [@aledash3](https://github.com/aledash3)
 
 ---
