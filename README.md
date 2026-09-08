@@ -1,22 +1,24 @@
 # ✅ To-Do CLI — Professional Task Manager
 
-<p align="center">
-  <a href="https://github.com/aledash3/todo-cli-python/actions/workflows/ci.yml">
-    <img src="https://github.com/aledash3/todo-cli-python/actions/workflows/ci.yml/badge.svg" alt="CI Status">
-  </a>
-  <img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?logo=python&logoColor=white" alt="Python Versions">
-  <img src="https://img.shields.io/badge/CLI-Typer-green.svg" alt="Typer">
-  <img src="https://img.shields.io/badge/Terminal-Rich-purple.svg" alt="Rich">
-  <img src="https://img.shields.io/badge/Tests-Pytest-yellow.svg" alt="Pytest">
-  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License">
-  <a href="README.es.md">
-    <img src="https://img.shields.io/badge/lang-Espa%C3%B1ol-yellow.svg" alt="Leer en Español">
-  </a>
-</p>
+[![CI](https://img.shields.io/github/actions/workflow/status/aledash3/todo-cli-python/ci.yml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/aledash3/todo-cli-python/actions)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![CLI: Typer](https://img.shields.io/badge/CLI-Typer-2E8B57?style=for-the-badge&logo=fastapi&logoColor=white)](https://typer.tiangolo.com/)
+[![Terminal: Rich](https://img.shields.io/badge/Terminal-Rich-9A32CD?style=for-the-badge)](https://rich.readthedocs.io/)
+[![Tests](https://img.shields.io/badge/Tests-18%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](https://docs.pytest.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Español](https://img.shields.io/badge/Idioma-Espa%C3%B1ol-orange?style=for-the-badge)](README.es.md)
 
 A lightweight, robust, and extensible command-line task management application built in Python using **Typer**, **Rich**, and a layered **SOLID** architecture. Features portable JSON persistence, case-insensitive keyword search, non-interactive scriptability (`--yes`), rich terminal tables, and 100% automated test coverage.
 
 > 🌐 **Language / Idioma:** English | [Leer documentación en Español](README.es.md)
+
+---
+
+## 🖥️ Terminal Interface
+
+<p align="center">
+  <img src="docs/assets/cli_preview.svg" alt="To-Do CLI Terminal Preview" width="100%">
+</p>
 
 ---
 

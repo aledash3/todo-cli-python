@@ -1,22 +1,24 @@
 # ✅ To-Do CLI — Administrador Profesional de Tareas
 
-<p align="center">
-  <a href="https://github.com/aledash3/todo-cli-python/actions/workflows/ci.yml">
-    <img src="https://github.com/aledash3/todo-cli-python/actions/workflows/ci.yml/badge.svg" alt="Estado de CI">
-  </a>
-  <img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?logo=python&logoColor=white" alt="Versiones de Python">
-  <img src="https://img.shields.io/badge/CLI-Typer-green.svg" alt="Typer">
-  <img src="https://img.shields.io/badge/Terminal-Rich-purple.svg" alt="Rich">
-  <img src="https://img.shields.io/badge/Tests-Pytest-yellow.svg" alt="Pytest">
-  <img src="https://img.shields.io/badge/Licencia-MIT-green.svg" alt="Licencia MIT">
-  <a href="README.md">
-    <img src="https://img.shields.io/badge/lang-English-blue.svg" alt="Switch to English">
-  </a>
-</p>
+[![CI](https://img.shields.io/github/actions/workflow/status/aledash3/todo-cli-python/ci.yml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/aledash3/todo-cli-python/actions)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![CLI: Typer](https://img.shields.io/badge/CLI-Typer-2E8B57?style=for-the-badge&logo=fastapi&logoColor=white)](https://typer.tiangolo.com/)
+[![Terminal: Rich](https://img.shields.io/badge/Terminal-Rich-9A32CD?style=for-the-badge)](https://rich.readthedocs.io/)
+[![Tests](https://img.shields.io/badge/Tests-18%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](https://docs.pytest.org/)
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow?style=for-the-badge)](LICENSE)
+[![English](https://img.shields.io/badge/Language-English-blue?style=for-the-badge)](README.md)
 
 Aplicación de línea de comandos (CLI) ligera, robusta y modular para la administración de tareas, desarrollada en Python mediante **Typer**, **Rich** y una arquitectura en capas fundamentada en los principios **SOLID**. Incluye persistencia portable en JSON, búsqueda por palabras clave, soporte para scripts no interactivos (`--yes`), tablas visuales con estilos avanzados y cobertura completa de pruebas automatizadas.
 
 > 🌐 **Language / Idioma:** Español | [Switch to English documentation](README.md)
+
+---
+
+## 🖥️ Interfaz de Terminal
+
+<p align="center">
+  <img src="docs/assets/cli_preview.svg" alt="Vista Previa de To-Do CLI en Terminal" width="100%">
+</p>
 
 ---
 
